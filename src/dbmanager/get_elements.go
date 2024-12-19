@@ -15,6 +15,10 @@ type BrowseViewData struct {
 }
 
 type BrowseView struct {
+	NotFirst  bool
+	NotLast   bool
+	NextLink  string
+	PrevLink  string
 	Page int
 	Data []BrowseViewData     
 }
@@ -26,6 +30,18 @@ func GetBrowseElementsByPage(page uint) BrowseView {
 		ids[i] = i + page * uint(PAGE_LEN)
 	}
 	res := GetBrowseElements(ids)
+	if page > 0 {
+		res.NotFirst = true
+		res.PrevLink = "/browse?page=" + strconv.Itoa(int(page))
+	} else {
+		res.NotFirst = false
+	}
+	if (page + 1) * uint(PAGE_LEN) < uint(len(DB)) {
+		res.NotLast = true
+		res.NextLink = "/browse?page=" + strconv.Itoa(int(page + 2))
+	} else {
+		res.NotLast = false
+	}
 	res.Page = int(page) + 1
 	return res
 }

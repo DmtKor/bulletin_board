@@ -10,6 +10,14 @@
                 Список объявлений - страница {{ .Page}}
             </h2>
             <div>
+                <div>
+                    {{if .NotFirst}}
+                    <a href="{{ .PrevLink}}">Предыдущая страница</a>
+                    {{end}}
+                    {{if .NotLast}}
+                    <a href="{{ .NextLink}}">Следующая страница</a>
+                    {{end}}
+                </div>
                 {{range .Data}}
                 <div>
                     <h4>
