@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ .Page}} - Просмотр объявлений</title>
+    </head>
+    <body>
+        <div>
+            <h2>
+                Список объявлений - страница {{ .Page}}
+            </h2>
+            <div>
+                {{range .Elements}}
+                <div>
+                    <h4>
+                        Объявление {{ .Num}} - {{ .Title}}
+                    </h4>
+                    <div>
+                        {{ .ShortText}}
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </body>
+</html>
