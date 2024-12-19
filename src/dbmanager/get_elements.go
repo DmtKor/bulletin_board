@@ -1,6 +1,9 @@
 package dbmanager
 
-import "errors"
+import (
+	"errors"
+	"strconv"
+)
 
 /* Placeholder for DB operations */
 
@@ -8,6 +11,7 @@ type BrowseViewData struct {
 	Title     string
 	Num       int
 	ShortText string
+	Link      string
 }
 
 type BrowseView struct {
@@ -31,11 +35,12 @@ func GetBrowseElements(ids []uint) BrowseView {
 	res.Data = make([]BrowseViewData, 0)
 
 	for _, val := range ids {
-		if val <= uint(len(DB)) {
+		if val < uint(len(DB)) {
 			res.Data = append(res.Data, BrowseViewData{ 
 				Num: int(val + 1), 
 				Title: DB[val].Title, 
-				ShortText: DB[val].Text[:150] })
+				ShortText: DB[val].Text[:150],
+			    Link: "/examine?num=" + strconv.Itoa(int(val)) })
 		}
 	}
 

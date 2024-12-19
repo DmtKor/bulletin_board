@@ -49,7 +49,7 @@ func examineHandler(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, err)
 		return
 	}
-	view := examineView { Num: strconv.Itoa(num), Title: data.Title, Text: data.Text }
+	view := examineView { Num: strconv.Itoa(num + 1), Title: data.Title, Text: data.Text }
 	tmpl, _ := template.ParseFiles("static/templates/examine.html")
 	tmpl.Execute(w, view)
 }
