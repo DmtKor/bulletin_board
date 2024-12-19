@@ -52,10 +52,14 @@ func GetBrowseElements(ids []uint) BrowseView {
 
 	for _, val := range ids {
 		if val < uint(len(DB)) {
+			shortLen := len(DB[val].Text)
+			if shortLen > 150 {
+				shortLen = 150
+			}
 			res.Data = append(res.Data, BrowseViewData{ 
 				Num: int(val + 1), 
 				Title: DB[val].Title, 
-				ShortText: DB[val].Text[:150],
+				ShortText: DB[val].Text[:shortLen],
 			    Link: "/examine?num=" + strconv.Itoa(int(val)) })
 		}
 	}

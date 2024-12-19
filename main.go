@@ -11,7 +11,7 @@ import (
 func main() {
 	// Test
 	for i := 0; i < 50; i++ {
-		err := dbmanager.AddElement(dbmanager.Element{ Title: "Title " + strconv.Itoa(i + 1), Text: "Text: text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text" })
+		_, err := dbmanager.AddElement(dbmanager.Element{ Title: "Title " + strconv.Itoa(i + 1), Text: "Text: text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text  text" })
 		if (err != nil) {
 			fmt.Println("Error" + err.Error())
 		}
