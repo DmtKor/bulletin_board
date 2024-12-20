@@ -1,0 +1,1 @@
+This is a simple example to have a look at http routing and html templates. There is no actual DB functionality and there is no safe concurrent access to data.
